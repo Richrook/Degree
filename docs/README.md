@@ -68,3 +68,25 @@ refactor: 関数の分割
 
 可読性を上げるため
 ```
+
+## ディレクトリ構成
+
+```
+└─ Assets
+     ├─ MyGame        <- 外部ライブラリ以外の自作物はこのディレクトリ以下に置く
+     │   ├─ Prefabs  <- プレハブを置く
+     │   │   ├─ ExamplePrefab.prefab
+     │   │   ├─ ExamplePrefab.prefab.meta
+     │   │   └─ ...
+     │   ├─ Scenes   <- シーンを置く
+     │   │   ├─ ExampleScene.unity
+     │   │   ├─ ExampleScene.unity.meta
+     │   │   └─ ...
+     │   └─ Scripts  <- C#スクリプトを置く
+     │        ├─ ExampleScript.cs
+     │        ├─ ExampleScript.cs.meta
+     │        └─ ...
+     ├─ 外部ライブラリ(その1)
+     ├─ 外部ライブラリ(その2)
+     └─ ...
+```
