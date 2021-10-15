@@ -1,6 +1,6 @@
 {
     "recommendations": [
-        "kreativ-software.csharpextensions",
+        "ms-dotnettools.csharp",
         "zrachod.mono-snippets"
     ]
 }
