@@ -69,3 +69,7 @@ crashlytics-build.properties
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
 /[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# AssetStore から import したアセットを Git 管理下に置かない
+/[Aa]ssets/*
+!/[Aa]ssets/MyGame/
