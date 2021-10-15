@@ -17,6 +17,7 @@
 - [MonoBehaviour Snippets](https://marketplace.visualstudio.com/items?itemName=zrachod.mono-snippets) (任意)
 
 拡張機能のタブの `RECOMMENDED` に表示されているはず
+![Screenshot-20211015135440-990x575](https://user-images.githubusercontent.com/63896499/137436214-fce1d233-855c-45b7-b19c-5ea9e1e5de27.png)
 
 ### 環境によって設定が必要かもしれない項目
 
@@ -35,3 +36,4 @@
 ### 設定確認
 
 vscode をリロード後、OmniSharp のアイコンが表示されていて、`OmniSharp server is running` となっていれば OK
+![Screenshot from 2021-10-15 14-00-32](https://user-images.githubusercontent.com/63896499/137436251-01a84241-c45b-4788-b571-d5e67a2906f1.png)
