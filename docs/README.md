@@ -73,7 +73,7 @@ refactor: 関数の分割
 
 ```
 └─ Assets
-     ├─ MyGame        <- 外部ライブラリ以外の自作物はこのディレクトリ以下に置く
+     ├─ MyGame       <- 外部ライブラリ以外の自作物はこのディレクトリ以下に置く
      │   ├─ Prefabs  <- プレハブを置く
      │   │   ├─ ExamplePrefab.prefab
      │   │   ├─ ExamplePrefab.prefab.meta
