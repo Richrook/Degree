@@ -90,7 +90,3 @@ refactor: 関数の分割
      ├─ 外部ライブラリ(その2)
      └─ ...
 ```
-
-## omnisharp の設定
-
-[setup_omnisharp.md](setup_omnisharp.md) を参照
