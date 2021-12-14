@@ -15,7 +15,7 @@ public class OptionButtonScript : MonoBehaviour
     }
     //タイトル画面でButtonが押されたときの処理
     //OptionPanelをアクティブにする
-    public void DisplayOption()
+    public void ShowOption()
     {
         OptionPanel.SetActive(true);
     }
