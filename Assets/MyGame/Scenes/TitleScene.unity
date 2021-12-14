@@ -684,7 +684,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1025928906}
         m_TargetAssemblyTypeName: OptionButtonScript, Assembly-CSharp
-        m_MethodName: DisplayOption
+        m_MethodName: ShowOption
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
