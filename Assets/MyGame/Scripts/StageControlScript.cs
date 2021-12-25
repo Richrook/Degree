@@ -52,7 +52,7 @@ public class StageControlScript : MonoBehaviour
                 {
                     GameOver();
                 }
-                else if (playerControlScript.GetIsClear())
+                else if (playerControlScript.GetIsGameClear())
                 {
                     GameClear();
                 }
@@ -95,7 +95,6 @@ public class StageControlScript : MonoBehaviour
     void Play()
     {
         state = State.Play;
-
         PauseUI.SetActive(false);
         SettingUI.SetActive(false);
         Time.timeScale = 1;

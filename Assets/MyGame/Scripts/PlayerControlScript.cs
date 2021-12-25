@@ -27,7 +27,7 @@ public class PlayerControlScript : MonoBehaviour
     private int life = 5;
     const int canClearPi = 6;
     private int pi = 0;
-    private bool isClear = false;
+    private bool isGameClear = false;
     private bool isGameOver = false;
 
     // Start is called before the first frame update
@@ -80,9 +80,9 @@ public class PlayerControlScript : MonoBehaviour
         return recoverTime > 0.0f;
     }
 
-    public bool GetIsClear()
+    public bool GetIsGameClear()
     {
-        return isClear;
+        return isGameClear;
     }
 
     public bool GetIsGameOver()
@@ -118,7 +118,7 @@ public class PlayerControlScript : MonoBehaviour
         {
             if ((allowClear == true) && (Input.GetKeyDown(KeyCode.Space)))
             {
-                isClear = true;
+                isGameClear = true;
                 // クリア時の処理を呼び出す
             }
         }
