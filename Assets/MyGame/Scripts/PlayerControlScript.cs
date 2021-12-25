@@ -23,7 +23,9 @@ public class PlayerControlScript : MonoBehaviour
     private bool allowClear = false;
 
     // 取得状況の管理
+    const int maxLife = 5;
     private int life = 5;
+    const int canClearPi = 6;
     private int pi = 0;
     private bool isClear = false;
     private bool isGameOver = false;
@@ -47,6 +49,7 @@ public class PlayerControlScript : MonoBehaviour
             testMove();
         }
     }
+
     // 動作テスト用
     // 矢印キーでプレイヤーが移動
     public void testMove()
@@ -70,15 +73,18 @@ public class PlayerControlScript : MonoBehaviour
             moveDirection.y = 0;
         }
     }
+
     // 気絶判定
     private bool IsStun()
     {
         return recoverTime > 0.0f;
     }
+
     public bool GetIsClear()
     {
         return isClear;
     }
+
     public bool GetIsGameOver()
     {
         return isGameOver;
@@ -129,7 +135,7 @@ public class PlayerControlScript : MonoBehaviour
                 Debug.Log("Pi: " + pi);
             }
             // Piを6個以上取得したらクリア可能状態にする
-            if (pi == 6)
+            if (pi == canClearPi)
             {
                 allowClear = true;
             }
@@ -137,7 +143,7 @@ public class PlayerControlScript : MonoBehaviour
         // ライフを回復
         else if (hit.gameObject.tag == "life")
         {
-            if (life < 5)
+            if (life < maxLife)
             {
                 life += 1;
             }
