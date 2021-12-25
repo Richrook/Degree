@@ -6,30 +6,18 @@ using UnityEngine.SceneManagement;
 public class StageControlScript : MonoBehaviour
 {
     // ゲームの状態
-    enum State
-    {
-        Ready,
-        Play,
-        Pause,
-        Setting,
-        GameOver,
-        GameClear
-    }
-    State state;
+    public State state;
 
     // ポーズ画面と設定画面UIの取得
     public GameObject PauseUI;
     public GameObject SettingUI;
 
-    // プレイヤーの取得
-    // public PlayerControlScript player;
-    // bool isClear = player.isClear;
-    // bool isClear = player.isGameover;
-    bool isClear = false;
-    bool isGameover = false;
+    // プレイヤーコントローラーの取得
+    PlayerControlScript playerControlScript;
 
     void Start()
     {
+        playerControlScript = GameObject.Find("Player").GetComponent<PlayerControlScript>();
         Ready();
     }
 
@@ -50,11 +38,12 @@ public class StageControlScript : MonoBehaviour
                 {
                     Pause();
                 }
-                if (isGameover == true)
+                // ゲーム状況の判定と遷移
+                if (playerControlScript.GetIsGameOver())
                 {
                     GameOver();
                 }
-                else if (isClear == true)
+                else if (playerControlScript.GetIsGameClear())
                 {
                     GameClear();
                 }
@@ -97,11 +86,9 @@ public class StageControlScript : MonoBehaviour
     void Play()
     {
         state = State.Play;
-
         PauseUI.SetActive(false);
         SettingUI.SetActive(false);
         Time.timeScale = 1;
-
         Debug.Log(state);
     }
 
@@ -122,7 +109,16 @@ public class StageControlScript : MonoBehaviour
     {
         state = State.Pause;
         PauseUI.SetActive(true);
+        SettingUI.SetActive(false);
         Time.timeScale = 0;
+        Debug.Log(state);
+    }
+
+    void Setting()
+    {
+        state = State.Setting;
+        PauseUI.SetActive(false);
+        SettingUI.SetActive(true);
         Debug.Log(state);
     }
 
@@ -143,18 +139,12 @@ public class StageControlScript : MonoBehaviour
     // ポーズ画面から設定画面への切り替え
     public void OnToSettingButtonClicked()
     {
-        state = State.Setting;
-        PauseUI.SetActive(false);
-        SettingUI.SetActive(true);
-        Debug.Log(state);
+        Setting();
     }
 
     // 設定画面からポーズ画面への切り替え
     public void OnToPauseButtonClicked()
     {
-        state = State.Pause;
-        PauseUI.SetActive(true);
-        SettingUI.SetActive(false);
-        Debug.Log(state);
+        Pause();
     }
 }
