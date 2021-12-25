@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 public class StageControlScript : MonoBehaviour
 {
     // ゲームの状態
-    enum State
+    public enum State
     {
         Ready,
         Play,
@@ -15,21 +15,18 @@ public class StageControlScript : MonoBehaviour
         GameOver,
         GameClear
     }
-    State state;
+    public State state;
 
     // ポーズ画面と設定画面UIの取得
     public GameObject PauseUI;
     public GameObject SettingUI;
 
-    // プレイヤーの取得
-    // public PlayerControlScript player;
-    // bool isClear = player.isClear;
-    // bool isClear = player.isGameover;
-    bool isClear = false;
-    bool isGameover = false;
+    // プレイヤーコントローラーの取得
+    PlayerControlScript playerControlScript;
 
     void Start()
     {
+        playerControlScript = GameObject.Find("Player").GetComponent<PlayerControlScript>();
         Ready();
     }
 
@@ -50,11 +47,11 @@ public class StageControlScript : MonoBehaviour
                 {
                     Pause();
                 }
-                if (isGameover == true)
+                if (playerControlScript.GetIsGameOver())
                 {
                     GameOver();
                 }
-                else if (isClear == true)
+                else if (playerControlScript.GetIsClear())
                 {
                     GameClear();
                 }
@@ -101,7 +98,6 @@ public class StageControlScript : MonoBehaviour
         PauseUI.SetActive(false);
         SettingUI.SetActive(false);
         Time.timeScale = 1;
-
         Debug.Log(state);
     }
 
