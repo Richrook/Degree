@@ -16,16 +16,16 @@ public class PlayerControlScript : MonoBehaviour
     PiControlScript piControlScript;
 
     // 気絶状態(プレイヤーを一定時間動けなくする)の管理
-    const float StunDuration = 1.0f;
+    const float STUN_DURATION = 1.0f;
     private float recoverTime = 0.0f;
 
     // クリア可能判定
     private bool allowClear = false;
 
     // 取得状況の管理
-    const int maxLife = 5;
+    const int MAX_LIFE = 5;
     private int life = 5;
-    const int canClearPi = 6;
+    const int CAN_CLEAR_PI = 6;
     private int pi = 0;
     private bool isGameClear = false;
     private bool isGameOver = false;
@@ -105,7 +105,7 @@ public class PlayerControlScript : MonoBehaviour
             playerPos.y = 0;
             enemyPos.y = 0;
             controller.Move(playerPos - enemyPos);
-            recoverTime = StunDuration;
+            recoverTime = STUN_DURATION;
 
             Debug.Log("Life: " + life);
             if (life == 0)
@@ -135,7 +135,7 @@ public class PlayerControlScript : MonoBehaviour
                 Debug.Log("Pi: " + pi);
             }
             // Piを6個以上取得したらクリア可能状態にする
-            if (pi == canClearPi)
+            if (pi == CAN_CLEAR_PI)
             {
                 allowClear = true;
             }
@@ -143,7 +143,7 @@ public class PlayerControlScript : MonoBehaviour
         // ライフを回復
         else if (hit.gameObject.tag == "life")
         {
-            if (life < maxLife)
+            if (life < MAX_LIFE)
             {
                 life += 1;
             }
