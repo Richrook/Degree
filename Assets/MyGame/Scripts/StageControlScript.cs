@@ -47,6 +47,7 @@ public class StageControlScript : MonoBehaviour
                 {
                     Pause();
                 }
+                // ゲーム状況の判定と遷移
                 if (playerControlScript.GetIsGameOver())
                 {
                     GameOver();
