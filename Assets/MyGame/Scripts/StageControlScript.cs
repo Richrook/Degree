@@ -6,15 +6,6 @@ using UnityEngine.SceneManagement;
 public class StageControlScript : MonoBehaviour
 {
     // ゲームの状態
-    public enum State
-    {
-        Ready,
-        Play,
-        Pause,
-        Setting,
-        GameOver,
-        GameClear
-    }
     public State state;
 
     // ポーズ画面と設定画面UIの取得

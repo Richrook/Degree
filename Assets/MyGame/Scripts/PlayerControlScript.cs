@@ -44,7 +44,7 @@ public class PlayerControlScript : MonoBehaviour
         {
             recoverTime -= Time.deltaTime;
         }
-        else if (stageControlScript.state == StageControlScript.State.Play)
+        else if (stageControlScript.state == State.Play)
         {
             testMove();
         }
