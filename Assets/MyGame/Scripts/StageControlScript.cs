@@ -118,7 +118,16 @@ public class StageControlScript : MonoBehaviour
     {
         state = State.Pause;
         PauseUI.SetActive(true);
+        SettingUI.SetActive(false);
         Time.timeScale = 0;
+        Debug.Log(state);
+    }
+
+    void Setting()
+    {
+        state = State.Setting;
+        PauseUI.SetActive(false);
+        SettingUI.SetActive(true);
         Debug.Log(state);
     }
 
@@ -139,18 +148,12 @@ public class StageControlScript : MonoBehaviour
     // ポーズ画面から設定画面への切り替え
     public void OnToSettingButtonClicked()
     {
-        state = State.Setting;
-        PauseUI.SetActive(false);
-        SettingUI.SetActive(true);
-        Debug.Log(state);
+        Setting();
     }
 
     // 設定画面からポーズ画面への切り替え
     public void OnToPauseButtonClicked()
     {
-        state = State.Pause;
-        PauseUI.SetActive(true);
-        SettingUI.SetActive(false);
-        Debug.Log(state);
+        Pause();
     }
 }
