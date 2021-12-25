@@ -19,12 +19,9 @@ public class PlayerControlScript : MonoBehaviour
     const float STUN_DURATION = 1.0f;
     private float recoverTime = 0.0f;
 
-    // クリア可能判定
-    private bool allowClear = false;
-
     // 取得状況の管理
     const int MAX_LIFE = 5;
-    private int life = 5;
+    private int life = MAX_LIFE;
     const int CAN_CLEAR_PI = 6;
     private int pi = 0;
     private bool isGameClear = false;
@@ -108,7 +105,7 @@ public class PlayerControlScript : MonoBehaviour
             recoverTime = STUN_DURATION;
 
             Debug.Log("Life: " + life);
-            if (life == 0)
+            if (life <= 0)
             {
                 isGameOver = true;
             }
@@ -116,7 +113,7 @@ public class PlayerControlScript : MonoBehaviour
         // クリア可能な状態であればゲームクリアとする
         else if (hit.gameObject.tag == "goal")
         {
-            if ((allowClear == true) && (Input.GetKeyDown(KeyCode.Space)))
+            if ((pi >= CAN_CLEAR_PI) && (Input.GetKeyDown(KeyCode.Space)))
             {
                 isGameClear = true;
                 // クリア時の処理を呼び出す
@@ -127,17 +124,16 @@ public class PlayerControlScript : MonoBehaviour
         {
             string piName = hit.gameObject.name;
             piControlScript = GameObject.Find(piName).GetComponent<PiControlScript>();
-            if ((piControlScript.getIsValid() == true) && (Input.GetKeyDown(KeyCode.Space)))
+            if ((piControlScript.getIsValid()) && (Input.GetKeyDown(KeyCode.Space)))
             {
                 pi += 1;
                 piControlScript.setIsValid(false);
                 // Pi取得時の関数を呼び出す
                 Debug.Log("Pi: " + pi);
             }
-            // Piを6個以上取得したらクリア可能状態にする
+            // Piを6個取得したらクリア可能状態にする
             if (pi == CAN_CLEAR_PI)
             {
-                allowClear = true;
             }
         }
         // ライフを回復
