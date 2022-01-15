@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class StageControlScript : MonoBehaviour
@@ -8,9 +9,16 @@ public class StageControlScript : MonoBehaviour
     // ゲームの状態
     public State state;
 
-    // ポーズ画面と設定画面UIの取得
+    // UIの取得
     public GameObject PauseUI;
     public GameObject SettingUI;
+    public GameObject LifePiUI;
+
+    // ライフのアイコンを格納
+    public GameObject[] lifeIcons;
+
+    // Pi取得数
+    public Text piCount;
 
     // プレイヤーコントローラーの取得
     PlayerControlScript playerControlScript;
@@ -23,6 +31,10 @@ public class StageControlScript : MonoBehaviour
 
     void LateUpdate()
     {
+        // ライフとPiのUIを更新
+        UpdateLife();
+        UpdatePiCount();
+
         switch (state)
         {
             case State.Ready:
@@ -80,6 +92,7 @@ public class StageControlScript : MonoBehaviour
         state = State.Ready;
         PauseUI.SetActive(false);
         SettingUI.SetActive(false);
+        LifePiUI.SetActive(false);
         Debug.Log(state);
     }
 
@@ -88,6 +101,7 @@ public class StageControlScript : MonoBehaviour
         state = State.Play;
         PauseUI.SetActive(false);
         SettingUI.SetActive(false);
+        LifePiUI.SetActive(true);
         Time.timeScale = 1;
         Debug.Log(state);
     }
@@ -95,12 +109,14 @@ public class StageControlScript : MonoBehaviour
     void GameOver()
     {
         state = State.GameOver;
+        LifePiUI.SetActive(false);
         Debug.Log(state);
     }
 
     void GameClear()
     {
         state = State.GameClear;
+        LifePiUI.SetActive(false);
         Debug.Log(state);
     }
 
@@ -146,5 +162,29 @@ public class StageControlScript : MonoBehaviour
     public void OnToPauseButtonClicked()
     {
         Pause();
+    }
+
+    // ライフの表示数を管理
+    private void UpdateLife()
+    {
+        int life = playerControlScript.getLife();
+        for (int i = 0; i < lifeIcons.Length; i++)
+        {
+            if (i < life)
+            {
+                lifeIcons[i].SetActive(true);
+            }
+            else
+            {
+                lifeIcons[i].SetActive(false);
+            }
+        }
+    }
+
+    // Piの取得数を管理
+    private void UpdatePiCount()
+    {
+        int pi = playerControlScript.getPi();
+        piCount.text = pi + " / 8";
     }
 }

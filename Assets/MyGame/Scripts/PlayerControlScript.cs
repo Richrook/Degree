@@ -87,6 +87,16 @@ public class PlayerControlScript : MonoBehaviour
         return isGameOver;
     }
 
+    public int getLife()
+    {
+        return life;
+    }
+
+    public int getPi()
+    {
+        return pi;
+    }
+
     // 衝突判定
     void OnControllerColliderHit(ControllerColliderHit hit)
     {
