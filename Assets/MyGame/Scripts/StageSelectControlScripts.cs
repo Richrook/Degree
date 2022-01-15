@@ -15,7 +15,7 @@ public class StageSelectControlScripts : MonoBehaviour
     // ステージセレクト画面と設定画面UIの取得
     public GameObject StageSelectUI;
     public GameObject OptionUI;
-    
+
     void Start()
     {
         StageSelect();
@@ -32,7 +32,7 @@ public class StageSelectControlScripts : MonoBehaviour
                     Option();
                 }
                 break;
-            
+
             case State.Option:
                 // エスケープキーでステージセレクト画面に
                 if (Input.GetKeyDown(KeyCode.Escape))
@@ -42,7 +42,7 @@ public class StageSelectControlScripts : MonoBehaviour
                 break;
         }
     }
-    
+
     void StageSelect()
     {
         state = State.StageSelect;
@@ -57,5 +57,13 @@ public class StageSelectControlScripts : MonoBehaviour
         StageSelectUI.SetActive(false);
         OptionUI.SetActive(true);
         Debug.Log(state);
+    }
+    public void OnClickTitleButton()
+    {
+        SceneManager.LoadScene("TitleScene");
+    }
+    public void OnClickCloseButton()
+    {
+        StageSelect();
     }
 }
