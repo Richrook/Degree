@@ -7,8 +7,7 @@ public class OptionButtonScript : MonoBehaviour
 {
     //インスペクターウィンドウからゲームオブジェクトを設定する
 
-    [SerializeField] GameObject OptionPanel;
-
+    public GameObject SettingUI;
     void start()
     {
         HideOption();
@@ -17,13 +16,13 @@ public class OptionButtonScript : MonoBehaviour
     //OptionPanelをアクティブにする
     public void ShowOption()
     {
-        OptionPanel.SetActive(true);
+        SettingUI.SetActive(true);
     }
 
     //OptionPanelでBackButtonが押されたときの処理
     //OptionPanelを非アクティブにする
     public void HideOption()
     {
-        OptionPanel.SetActive(false);
+        SettingUI.SetActive(false);
     }
 }
