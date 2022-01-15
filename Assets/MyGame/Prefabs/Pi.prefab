@@ -567,7 +567,7 @@ GameObject:
   - component: {fileID: 2749171642325732497}
   - component: {fileID: 7532237766587256262}
   m_Layer: 0
-  m_Name: ColorPi
+  m_Name: Pi
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
