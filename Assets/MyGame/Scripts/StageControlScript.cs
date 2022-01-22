@@ -23,9 +23,12 @@ public class StageControlScript : MonoBehaviour
     // プレイヤーコントローラーの取得
     PlayerControlScript playerControlScript;
 
+    public static string SceneName;
+
     void Start()
     {
         playerControlScript = GameObject.Find("Player").GetComponent<PlayerControlScript>();
+        SceneName = SceneManager.GetActiveScene().name;
         Ready();
     }
 
@@ -110,6 +113,7 @@ public class StageControlScript : MonoBehaviour
     {
         state = State.GameOver;
         LifePiUI.SetActive(false);
+        SceneManager.LoadScene("GameOverScene");
         Debug.Log(state);
     }
 
@@ -186,5 +190,10 @@ public class StageControlScript : MonoBehaviour
     {
         int pi = playerControlScript.getPi();
         piCount.text = pi + " / 8";
+    }
+
+    public static string getSceneName()
+    {
+        return SceneName;
     }
 }
