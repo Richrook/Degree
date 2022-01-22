@@ -5,14 +5,18 @@ using UnityEngine;
 public class PiControlScript : MonoBehaviour
 {
     private bool isValid = true;
+    private GameObject monitor;
+    public Material[] materials;
 
     public bool getIsValid()
     {
         return isValid;
     }
 
-    public void setIsValid(bool isValid)
+    public void changePiState()
     {
-        this.isValid = isValid;
+        this.isValid = false;
+        monitor = transform.Find("Monitor").gameObject;
+        monitor.GetComponent<Renderer>().material = materials[1];
     }
 }
