@@ -13,9 +13,9 @@ public class PiControlScript : MonoBehaviour
         return isValid;
     }
 
-    public void setIsValid(bool isValid)
+    public void changePiState()
     {
-        this.isValid = isValid;
+        this.isValid = false;
         monitor = transform.Find("Monitor").gameObject;
         monitor.GetComponent<Renderer>().material = materials[1];
     }

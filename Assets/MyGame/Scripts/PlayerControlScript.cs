@@ -137,7 +137,7 @@ public class PlayerControlScript : MonoBehaviour
             if ((piControlScript.getIsValid()) && (Input.GetKeyDown(KeyCode.Space)))
             {
                 pi += 1;
-                piControlScript.setIsValid(false);
+                piControlScript.changePiState();
                 // Pi取得時の関数を呼び出す
                 Debug.Log("Pi: " + pi);
             }
