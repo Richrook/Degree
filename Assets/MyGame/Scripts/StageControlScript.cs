@@ -56,11 +56,11 @@ public class StageControlScript : MonoBehaviour
                 // ゲーム状況の判定と遷移
                 if (playerControlScript.GetIsGameOver())
                 {
-                    GameOver();
+                    SceneManager.LoadScene("GameOverScene");
                 }
                 else if (playerControlScript.GetIsGameClear())
                 {
-                    GameClear();
+                    SceneManager.LoadScene("GameClearScene");
                 }
                 break;
             case State.Pause:
@@ -73,18 +73,6 @@ public class StageControlScript : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     Play();
-                }
-                break;
-            case State.GameOver:
-                if (Input.GetButtonDown("Fire1"))
-                {
-                    SceneManager.LoadScene("StageSelectScene");
-                }
-                break;
-            case State.GameClear:
-                if (Input.GetButtonDown("Fire1"))
-                {
-                    SceneManager.LoadScene("StageSelectScene");
                 }
                 break;
         }
@@ -106,21 +94,6 @@ public class StageControlScript : MonoBehaviour
         SettingUI.SetActive(false);
         LifePiUI.SetActive(true);
         Time.timeScale = 1;
-        Debug.Log(state);
-    }
-
-    void GameOver()
-    {
-        state = State.GameOver;
-        LifePiUI.SetActive(false);
-        SceneManager.LoadScene("GameOverScene");
-        Debug.Log(state);
-    }
-
-    void GameClear()
-    {
-        state = State.GameClear;
-        LifePiUI.SetActive(false);
         Debug.Log(state);
     }
 
