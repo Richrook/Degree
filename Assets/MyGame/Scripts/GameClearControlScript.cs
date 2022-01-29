@@ -6,12 +6,6 @@ using UnityEngine.SceneManagement;
 public class GameClearControlScript : MonoBehaviour
 {
     public string ReturnSceneName;
-    public Text piCount;
-    void Start()
-    {
-        int pi = PlayerControlScript.getPi();
-        piCount.text = pi + " / 8";
-    }
 
     public void OnClickStageSelectButton()
     {
