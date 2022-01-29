@@ -161,5 +161,14 @@ public class PlayerControlScript : MonoBehaviour
         {
             isGameOver = true;
         }
+        //弘津がテスト用に書き加えたものです。
+        GoalControlScript GoalControlScript;
+        GoalControlScript = GameObject.Find("Goal").GetComponent<GoalControlScript>();
+        int piii = 0;
+        if (piii == 0)
+        {
+            GoalControlScript.changeGoal();
+        }
+        piii = piii + 1;
     }
 }

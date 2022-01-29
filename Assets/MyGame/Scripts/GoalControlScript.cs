@@ -2,21 +2,21 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GoalScript : MonoBehaviour
+public class GoalControlScript : MonoBehaviour
 {
-    PlayerControlScript playerControlScript;
-
     public GameObject GoalRange; //オブジェクト
     public ParticleSystem GoalEffect; //エフェクト
-
-    private void Start()
-    {
-        GoalEffect.Stop (true, ParticleSystemStopBehavior.StopEmitting);
-    }
-    public void changeGoalState()
+    //エフェクトの誤動作防止のため一度しか実行できないようにする
+    private int Count_for_effects=0;
+    
+    public void changeGoal()
     {
         GoalRange.GetComponent<Renderer>().material.color = new Color32(97,255,0,109);
         GoalRange.GetComponent<Collider>().enabled = false;
-        GoalEffect.Play (true);
+        if (Count_for_effects == 0)
+        {
+            GoalEffect.Play (true);
+            Count_for_effects = 1;
+        }
     }
 }
