@@ -4,12 +4,6 @@ using UnityEngine;
 
 public class PlayerControlScript : MonoBehaviour
 {
-    //動作テスト用の変数
-    Vector3 moveDirection = Vector3.zero;
-    public float gravity;
-    public float speedRun;
-    public float speedJump;
-
     // シーン内で参照するオブジェクト
     CharacterController controller;
     StageControlScript stageControlScript;
@@ -32,43 +26,6 @@ public class PlayerControlScript : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         stageControlScript = GameObject.Find("SampleStageController").GetComponent<StageControlScript>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (IsStun())
-        {
-            recoverTime -= Time.deltaTime;
-        }
-        else if (stageControlScript.state == State.Play)
-        {
-            testMove();
-        }
-    }
-
-    // 動作テスト用
-    // 矢印キーでプレイヤーが移動
-    public void testMove()
-    {
-        if (controller.isGrounded)
-        {
-            if (Input.GetAxis("Vertical") != 0.0f)
-            {
-                moveDirection.z = Input.GetAxis("Vertical") * speedRun;
-            }
-            if (Input.GetAxis("Horizontal") != 0.0f)
-            {
-                moveDirection.x = Input.GetAxis("Horizontal") * speedRun;
-            }
-        }
-        moveDirection.y -= gravity * Time.deltaTime;
-        Vector3 globalDirection = transform.TransformDirection(moveDirection);
-        controller.Move(globalDirection * Time.deltaTime);
-        if (controller.isGrounded)
-        {
-            moveDirection.y = 0;
-        }
     }
 
     // 気絶判定
@@ -98,15 +55,15 @@ public class PlayerControlScript : MonoBehaviour
     }
 
     // 衝突判定
-    void OnControllerColliderHit(ControllerColliderHit hit)
+    void OnCollisionEnter(Collision collision)
     {
         // 敵に当たったらライフを減らす
         // ライフがゼロになったらゲームオーバー
-        if (hit.gameObject.tag == "enemy")
+        if (collision.gameObject.tag == "enemy")
         {
             life -= 1;
             // 敵から一定距離をとり,気絶状態に入る
-            string enemyName = hit.gameObject.name;
+            string enemyName = collision.gameObject.name;
             Vector3 enemyPos = GameObject.Find(enemyName).transform.position;
             Vector3 playerPos = transform.position;
             playerPos.y = 0;
@@ -121,7 +78,7 @@ public class PlayerControlScript : MonoBehaviour
             }
         }
         // クリア可能な状態であればゲームクリアとする
-        else if (hit.gameObject.tag == "goal")
+        else if (collision.gameObject.tag == "goal")
         {
             if ((pi >= CAN_CLEAR_PI) && (Input.GetKeyDown(KeyCode.Space)))
             {
@@ -130,11 +87,11 @@ public class PlayerControlScript : MonoBehaviour
             }
         }
         // スペースキーでPiを取得
-        else if (hit.gameObject.tag == "pi")
+        else if (collision.gameObject.tag == "pi")
         {
-            string piName = hit.gameObject.name;
+            string piName = collision.gameObject.name;
             piControlScript = GameObject.Find(piName).GetComponent<PiControlScript>();
-            if ((piControlScript.getIsValid()) && (Input.GetKeyDown(KeyCode.Space)))
+            if ((piControlScript.getIsValid()) && (Input.GetKeyDown(KeyCode.Q)))
             {
                 pi += 1;
                 piControlScript.changePiState();
@@ -147,17 +104,17 @@ public class PlayerControlScript : MonoBehaviour
             }
         }
         // ライフを回復
-        else if (hit.gameObject.tag == "life")
+        else if (collision.gameObject.tag == "life")
         {
             if (life < MAX_LIFE)
             {
                 life += 1;
             }
-            Destroy(hit.gameObject);
+            Destroy(collision.gameObject);
             Debug.Log("Life: " + life);
         }
         // 落下したらゲームオーバーとする
-        else if (hit.gameObject.tag == "abyss")
+        else if (collision.gameObject.tag == "abyss")
         {
             isGameOver = true;
         }
