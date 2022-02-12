@@ -907,6 +907,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: LifePiUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7636031785483036952, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: a09c9192eea7f454c8d83681db93ff5c, type: 3}
+    - target: {fileID: 7636031785483036959, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636031785588171092, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3e250a302773f4f60b7a105eabe6b8d1, type: 3}
+    - target: {fileID: 7636031785837419788, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3e250a302773f4f60b7a105eabe6b8d1, type: 3}
+    - target: {fileID: 7636031786181414636, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3e250a302773f4f60b7a105eabe6b8d1, type: 3}
+    - target: {fileID: 7636031786270339591, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3e250a302773f4f60b7a105eabe6b8d1, type: 3}
+    - target: {fileID: 7636031786993336440, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 3e250a302773f4f60b7a105eabe6b8d1, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
 --- !u!1 &1361637666 stripped
