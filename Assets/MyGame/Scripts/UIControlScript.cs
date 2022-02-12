@@ -21,7 +21,8 @@ public class UIControlScript : MonoBehaviour
     public Transform minimapCamera;
     [Tooltip("ミニマップ用カメラで追跡するオブジェクト(プレイヤー)")]
     public Transform target;
-    uint distMinimapCamera;
+    // ミニマップ関連プロパティ (Unity Inspector ウィンドウ非公開)
+    Vector3 offset;
 
     // プレイヤーコントローラーの取得
     PlayerControlScript playerControlScript;
@@ -67,12 +68,12 @@ public class UIControlScript : MonoBehaviour
     // ミニマップの初期処理
     void initMinimap()
     {
-        distMinimapCamera = (uint)(300 * minimapScale);
+        offset = new Vector3(0.0f, 50 * minimapScale, 0.0f);
     }
 
     // ミニマップの更新
     void UpdateMinimap()
     {
-
+        minimapCamera.position = target.position + offset;
     }
 }
