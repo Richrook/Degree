@@ -15,7 +15,7 @@ public class UIControlScript : MonoBehaviour
     // ミニマップ関連プロパティ
     [Header("ミニマップ")]
     [Tooltip("ミニマップの大きさ")]
-    [Range(0.1f, 2.0f)]
+    [Range(0.5f, 2.0f)]
     public float minimapScale = 1.0f;
     [Tooltip("ミニマップ用カメラで追跡するオブジェクト(プレイヤー)")]
     public Transform target;
