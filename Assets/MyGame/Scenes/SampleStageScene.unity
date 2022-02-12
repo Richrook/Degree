@@ -800,7 +800,7 @@ PrefabInstance:
     - target: {fileID: 7636031785483036952, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300000, guid: b32a9b3527fb94ac7847fd6e69fdab0d, type: 3}
+      objectReference: {fileID: 21300000, guid: 7fc55c79c984141538ae6adba461e69d, type: 3}
     - target: {fileID: 7636031785483036959, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
       propertyPath: m_SizeDelta.x
       value: 50
