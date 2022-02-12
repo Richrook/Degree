@@ -191,6 +191,7 @@ MonoBehaviour:
   - {fileID: 1361637667}
   piCount: {fileID: 1251292669}
   minimapScale: 1
+  minimapCamera: {fileID: 1370696291}
   target: {fileID: 1841079410}
 --- !u!1 &443411134
 GameObject:
