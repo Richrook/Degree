@@ -13,6 +13,8 @@ public class UIControlScript : MonoBehaviour
     public Text piCount;
 
     // ミニマップ関連プロパティ
+    [Header("ミニマップ")]
+    [Tooltip("ミニマップの大きさ")]
     [Range(0.1f, 2.0f)]
     public float minimapScale = 1.0f;
     [Tooltip("ミニマップ用カメラで追跡するオブジェクト(プレイヤー)")]
