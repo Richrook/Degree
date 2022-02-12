@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -133,6 +133,7 @@ GameObject:
   m_Component:
   - component: {fileID: 363841228}
   - component: {fileID: 363841227}
+  - component: {fileID: 363841229}
   m_Layer: 0
   m_Name: SampleStageController
   m_TagString: Untagged
@@ -156,13 +157,6 @@ MonoBehaviour:
   PauseUI: {fileID: 1515075034}
   SettingUI: {fileID: 746629271}
   LifePiUI: {fileID: 1361637666}
-  lifeIcons:
-  - {fileID: 1361637672}
-  - {fileID: 1361637671}
-  - {fileID: 1361637670}
-  - {fileID: 1361637669}
-  - {fileID: 1361637668}
-  piCount: {fileID: 1361637667}
 --- !u!4 &363841228
 Transform:
   m_ObjectHideFlags: 0
@@ -177,6 +171,25 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &363841229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363841226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 55d29956dee6873dea080e8d0644a2d9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lifeIcons:
+  - {fileID: 1361637671}
+  - {fileID: 1361637670}
+  - {fileID: 1361637669}
+  - {fileID: 1361637668}
+  - {fileID: 1361637667}
+  piCount: {fileID: 1251292669}
 --- !u!1 &443411134
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,6 +801,17 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1251292669 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 7636031786760394438, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+  m_PrefabInstance: {fileID: 1361637665}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1361637665
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -890,38 +914,27 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7636031785294497061, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
   m_PrefabInstance: {fileID: 1361637665}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1361637667 stripped
-MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 7636031786760394438, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
-  m_PrefabInstance: {fileID: 1361637665}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!1 &1361637668 stripped
+--- !u!1 &1361637667 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7636031785588171082, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
   m_PrefabInstance: {fileID: 1361637665}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1361637669 stripped
+--- !u!1 &1361637668 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7636031786181414626, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
   m_PrefabInstance: {fileID: 1361637665}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1361637670 stripped
+--- !u!1 &1361637669 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7636031786993336446, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
   m_PrefabInstance: {fileID: 1361637665}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1361637671 stripped
+--- !u!1 &1361637670 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7636031785837419778, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
   m_PrefabInstance: {fileID: 1361637665}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1361637672 stripped
+--- !u!1 &1361637671 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7636031786270339589, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
   m_PrefabInstance: {fileID: 1361637665}
