@@ -12,12 +12,17 @@ public class UIControlScript : MonoBehaviour
     // Pi取得数
     public Text piCount;
 
+    // ミニマップ関連プロパティ
+    public float minimapScale = 1.0f;
+    uint distMinimapCamera;
+
     // プレイヤーコントローラーの取得
     PlayerControlScript playerControlScript;
 
     void Start()
     {
         playerControlScript = GameObject.Find("Player").GetComponent<PlayerControlScript>();
+        initMinimap();
     }
 
     void LateUpdate()
@@ -25,6 +30,7 @@ public class UIControlScript : MonoBehaviour
         // ライフとPiのUIを更新
         UpdateLife();
         UpdatePiCount();
+        UpdateMinimap();
     }
 
     // ライフの表示数を管理
@@ -49,5 +55,17 @@ public class UIControlScript : MonoBehaviour
     {
         int pi = playerControlScript.getPi();
         piCount.text = pi + " / 8";
+    }
+
+    // ミニマップの初期処理
+    void initMinimap()
+    {
+        distMinimapCamera = (uint)(300 * minimapScale);
+    }
+
+    // ミニマップの更新
+    void UpdateMinimap()
+    {
+
     }
 }
