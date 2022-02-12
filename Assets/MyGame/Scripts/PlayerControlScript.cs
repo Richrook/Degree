@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerControlScript : MonoBehaviour
 {
     // シーン内で参照するオブジェクト
-    CharacterController controller;
     StageControlScript stageControlScript;
     PiControlScript piControlScript;
 
@@ -24,7 +23,6 @@ public class PlayerControlScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        controller = GetComponent<CharacterController>();
         stageControlScript = GameObject.Find("SampleStageController").GetComponent<StageControlScript>();
     }
 
@@ -68,7 +66,6 @@ public class PlayerControlScript : MonoBehaviour
             Vector3 playerPos = transform.position;
             playerPos.y = 0;
             enemyPos.y = 0;
-            controller.Move(playerPos - enemyPos);
             recoverTime = STUN_DURATION;
 
             Debug.Log("Life: " + life);
