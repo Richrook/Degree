@@ -8,6 +8,8 @@ public class PlayerStateMGTScript : MonoBehaviour
     StageControlScript stageControlScript;
     PiControlScript piControlScript;
 
+    // GoalControlScript goalControlScript;
+
     // 気絶状態(プレイヤーを一定時間動けなくする)の管理
     const float STUN_DURATION = 1.0f;
     private float recoverTime = 0.0f;
@@ -24,6 +26,7 @@ public class PlayerStateMGTScript : MonoBehaviour
     void Start()
     {
         stageControlScript = GameObject.Find("SampleStageController").GetComponent<StageControlScript>();
+        // goalControlScript = GameObject.Find("Goal).GetComponent<GoalControlScript>();
     }
 
     // 気絶判定
@@ -53,6 +56,27 @@ public class PlayerStateMGTScript : MonoBehaviour
     }
 
     // 衝突判定
+    void OnCollisionStay(Collision collision)
+    {
+        // QキーでPiを取得
+        if (collision.gameObject.tag == "pi")
+        {
+            string piName = collision.gameObject.name;
+            piControlScript = GameObject.Find(piName).GetComponent<PiControlScript>();
+            if ((piControlScript.getIsValid()) && (Input.GetKeyDown(KeyCode.Q)))
+            {
+                pi += 1;
+                piControlScript.changePiState();
+                // Pi取得時の関数を呼び出す
+                Debug.Log("Pi: " + pi);
+            }
+            // Piを6個取得したらクリア可能状態にする
+            if (pi == CAN_CLEAR_PI)
+            {
+                // goalControlScript.changeGoal();
+            }
+        }
+    }
     void OnCollisionEnter(Collision collision)
     {
         // 敵に当たったらライフを減らす
@@ -60,7 +84,7 @@ public class PlayerStateMGTScript : MonoBehaviour
         if (collision.gameObject.tag == "enemy")
         {
             life -= 1;
-            // 敵から一定距離をとり,気絶状態に入る
+            // 気絶状態に入る
             string enemyName = collision.gameObject.name;
             Vector3 enemyPos = GameObject.Find(enemyName).transform.position;
             Vector3 playerPos = transform.position;
@@ -81,23 +105,6 @@ public class PlayerStateMGTScript : MonoBehaviour
             {
                 isGameClear = true;
                 // クリア時の処理を呼び出す
-            }
-        }
-        // スペースキーでPiを取得
-        else if (collision.gameObject.tag == "pi")
-        {
-            string piName = collision.gameObject.name;
-            piControlScript = GameObject.Find(piName).GetComponent<PiControlScript>();
-            if ((piControlScript.getIsValid()) && (Input.GetKeyDown(KeyCode.Q)))
-            {
-                pi += 1;
-                piControlScript.changePiState();
-                // Pi取得時の関数を呼び出す
-                Debug.Log("Pi: " + pi);
-            }
-            // Piを6個取得したらクリア可能状態にする
-            if (pi == CAN_CLEAR_PI)
-            {
             }
         }
         // ライフを回復
