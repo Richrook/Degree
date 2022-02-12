@@ -907,6 +907,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: LifePiUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7636031785294497063, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_UiScaleMode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636031785294497063, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_MatchWidthOrHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636031785294497063, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_ReferenceResolution.x
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636031785294497063, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_ReferenceResolution.y
+      value: 700
+      objectReference: {fileID: 0}
     - target: {fileID: 7636031785483036952, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
       propertyPath: m_Sprite
       value: 
