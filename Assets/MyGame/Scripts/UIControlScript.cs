@@ -13,6 +13,7 @@ public class UIControlScript : MonoBehaviour
     public Text piCount;
 
     // ミニマップ関連プロパティ
+    [Range(0.1f, 2.0f)]
     public float minimapScale = 1.0f;
     uint distMinimapCamera;
 
