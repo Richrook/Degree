@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -797,6 +797,34 @@ PrefabInstance:
       propertyPath: m_Name
       value: LifePiUI
       objectReference: {fileID: 0}
+    - target: {fileID: 7636031785483036952, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8b99e7e79ea004081832975d1ddf8888, type: 3}
+    - target: {fileID: 7636031785483036959, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 7636031785588171092, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f1668ff00f8994599b19451b6c1cb00c, type: 3}
+    - target: {fileID: 7636031785837419788, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f1668ff00f8994599b19451b6c1cb00c, type: 3}
+    - target: {fileID: 7636031786181414636, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f1668ff00f8994599b19451b6c1cb00c, type: 3}
+    - target: {fileID: 7636031786270339591, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f1668ff00f8994599b19451b6c1cb00c, type: 3}
+    - target: {fileID: 7636031786993336440, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: f1668ff00f8994599b19451b6c1cb00c, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: aacecc53f65db4eb3a587577df6c4283, type: 3}
 --- !u!1 &1361637666 stripped
