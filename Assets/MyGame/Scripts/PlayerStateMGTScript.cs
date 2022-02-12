@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerControlScript : MonoBehaviour
+public class PlayerStateMGTScript : MonoBehaviour
 {
     // シーン内で参照するオブジェクト
     StageControlScript stageControlScript;

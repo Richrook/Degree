@@ -21,13 +21,13 @@ public class StageControlScript : MonoBehaviour
     public Text piCount;
 
     // プレイヤーコントローラーの取得
-    PlayerControlScript playerControlScript;
+    PlayerStateMGTScript playerStateMGTScript;
 
     public static string SceneName;
 
     void Start()
     {
-        playerControlScript = GameObject.Find("Player").GetComponent<PlayerControlScript>();
+        playerStateMGTScript = GameObject.Find("Player").GetComponent<PlayerStateMGTScript>();
         SceneName = SceneManager.GetActiveScene().name;
         Ready();
     }
@@ -54,11 +54,11 @@ public class StageControlScript : MonoBehaviour
                     Pause();
                 }
                 // ゲーム状況の判定と遷移
-                if (playerControlScript.GetIsGameOver())
+                if (playerStateMGTScript.GetIsGameOver())
                 {
                     GameOver();
                 }
-                else if (playerControlScript.GetIsGameClear())
+                else if (playerStateMGTScript.GetIsGameClear())
                 {
                     GameClear();
                 }
@@ -171,7 +171,7 @@ public class StageControlScript : MonoBehaviour
     // ライフの表示数を管理
     private void UpdateLife()
     {
-        int life = playerControlScript.getLife();
+        int life = playerStateMGTScript.getLife();
         for (int i = 0; i < lifeIcons.Length; i++)
         {
             if (i < life)
@@ -188,7 +188,7 @@ public class StageControlScript : MonoBehaviour
     // Piの取得数を管理
     private void UpdatePiCount()
     {
-        int pi = playerControlScript.getPi();
+        int pi = playerStateMGTScript.getPi();
         piCount.text = pi + " / 8";
     }
 
