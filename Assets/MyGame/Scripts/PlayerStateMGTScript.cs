@@ -19,7 +19,6 @@ public class PlayerStateMGTScript : MonoBehaviour
     private int life = MAX_LIFE;
     const int CAN_CLEAR_PI = 6;
     private int pi = 0;
-    private bool isGameClear = false;
     private bool isGameOver = false;
 
     // Start is called before the first frame update
@@ -33,11 +32,6 @@ public class PlayerStateMGTScript : MonoBehaviour
     private bool IsStun()
     {
         return recoverTime > 0.0f;
-    }
-
-    public bool GetIsGameClear()
-    {
-        return isGameClear;
     }
 
     public bool GetIsGameOver()
@@ -99,13 +93,9 @@ public class PlayerStateMGTScript : MonoBehaviour
             }
         }
         // クリア可能な状態であればゲームクリアとする
-        else if (collision.gameObject.tag == "goal")
+        else if ((collision.gameObject.tag == "goal") && (pi >= CAN_CLEAR_PI))
         {
-            if ((pi >= CAN_CLEAR_PI) && (Input.GetKeyDown(KeyCode.Space)))
-            {
-                isGameClear = true;
-                // クリア時の処理を呼び出す
-            }
+            stageControlScript.GameClear();
         }
         // ライフを回復
         else if (collision.gameObject.tag == "life")

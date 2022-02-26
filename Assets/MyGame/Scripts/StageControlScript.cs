@@ -40,10 +40,6 @@ public class StageControlScript : MonoBehaviour
                 {
                     SceneManager.LoadScene("GameOverScene");
                 }
-                else if (playerStateMGTScript.GetIsGameClear())
-                {
-                    SceneManager.LoadScene("GameClearScene");
-                }
                 break;
             case State.Pause:
                 if (Input.GetKeyDown(KeyCode.Escape))
@@ -88,6 +84,13 @@ public class StageControlScript : MonoBehaviour
         Debug.Log(state);
     }
 
+    public void GameClear()
+    {
+        state = State.GameClear;
+        Debug.Log("Clear");
+        SceneManager.LoadScene("GameClearScene");
+    }
+
     // 以下、ポーズ画面でボタンがクリックされたときの処理
 
     // タイトルに戻る
@@ -114,7 +117,7 @@ public class StageControlScript : MonoBehaviour
         Pause();
     }
 
-    public static string getSceneName()
+    public static string GetSceneName()
     {
         return SceneName;
     }
