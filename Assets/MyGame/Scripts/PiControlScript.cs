@@ -6,7 +6,7 @@ public class PiControlScript : MonoBehaviour
 {
     private bool isValid = true;
     private GameObject monitor;
-    public Material[] materials;
+    public Material PiMonitorInvalidMaterial;
 
     public bool getIsValid()
     {
@@ -17,6 +17,6 @@ public class PiControlScript : MonoBehaviour
     {
         this.isValid = false;
         monitor = transform.Find("Monitor").gameObject;
-        monitor.GetComponent<Renderer>().material = materials[1];
+        monitor.GetComponent<Renderer>().material = PiMonitorInvalidMaterial;
     }
 }
