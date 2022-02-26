@@ -15,13 +15,13 @@ public class StageControlScript : MonoBehaviour
     public GameObject LifePiUI;
 
     // プレイヤーコントローラーの取得
-    PlayerControlScript playerControlScript;
+    PlayerStateMGTScript playerStateMGTScript;
 
     public static string SceneName;
 
     void Start()
     {
-        playerControlScript = GameObject.Find("Player").GetComponent<PlayerControlScript>();
+        playerStateMGTScript = GameObject.Find("Player").GetComponent<PlayerStateMGTScript>();
         SceneName = SceneManager.GetActiveScene().name;
         Ready();
     }
@@ -44,11 +44,11 @@ public class StageControlScript : MonoBehaviour
                     Pause();
                 }
                 // ゲーム状況の判定と遷移
-                if (playerControlScript.GetIsGameOver())
+                if (playerStateMGTScript.GetIsGameOver())
                 {
                     SceneManager.LoadScene("GameOverScene");
                 }
-                else if (playerControlScript.GetIsGameClear())
+                else if (playerStateMGTScript.GetIsGameClear())
                 {
                     SceneManager.LoadScene("GameClearScene");
                 }

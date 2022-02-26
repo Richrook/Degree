@@ -13,11 +13,11 @@ public class UIControlScript : MonoBehaviour
     public Text piCount;
 
     // プレイヤーコントローラーの取得
-    PlayerControlScript playerControlScript;
+    PlayerStateMGTScript playerStateMGTScript;
 
     void Start()
     {
-        playerControlScript = GameObject.Find("Player").GetComponent<PlayerControlScript>();
+        playerStateMGTScript = GameObject.Find("Player").GetComponent<PlayerStateMGTScript>();
     }
 
     void LateUpdate()
@@ -30,7 +30,7 @@ public class UIControlScript : MonoBehaviour
     // ライフの表示数を管理
     private void UpdateLife()
     {
-        int life = playerControlScript.getLife();
+        int life = playerStateMGTScript.getLife();
         for (int i = 0; i < lifeIcons.Length; i++)
         {
             if (i < life)
@@ -47,7 +47,7 @@ public class UIControlScript : MonoBehaviour
     // Piの取得数を管理
     private void UpdatePiCount()
     {
-        int pi = playerControlScript.getPi();
+        int pi = playerStateMGTScript.getPi();
         piCount.text = pi + " / 8";
     }
 }

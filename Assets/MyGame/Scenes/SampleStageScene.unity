@@ -902,7 +902,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1316
+  m_Name: pb_Mesh-5770
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1066,7 +1066,7 @@ Mesh:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: pb_Mesh-1208
+  m_Name: pb_Mesh-5662
   serializedVersion: 10
   m_SubMeshes:
   - serializedVersion: 2
@@ -1077,8 +1077,8 @@ Mesh:
     firstVertex: 0
     vertexCount: 24
     localAABB:
-      m_Center: {x: 0, y: 0, z: 0}
-      m_Extent: {x: 0, y: 0, z: 0}
+      m_Center: {x: 0.3618127, y: 0.3177499, z: -0.9648242}
+      m_Extent: {x: 0.7834288, y: 0.49567088, z: 0.0351758}
   m_Shapes:
     vertices: []
     shapes: []
@@ -1333,9 +1333,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9394fdcd6dc9f4d31bce1a128747b949, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gravity: 20
-  speedRun: 20
-  speedJump: 20
 --- !u!143 &1841079412
 CharacterController:
   m_ObjectHideFlags: 0
