@@ -8,7 +8,7 @@ public class PlayerStateMGTScript : MonoBehaviour
     StageControlScript stageControlScript;
     PiControlScript piControlScript;
 
-    // GoalControlScript goalControlScript;
+    GoalControlScript goalControlScript;
 
     // 気絶状態(プレイヤーを一定時間動けなくする)の管理
     const float STUN_DURATION = 1.0f;
@@ -26,7 +26,7 @@ public class PlayerStateMGTScript : MonoBehaviour
     void Start()
     {
         stageControlScript = GameObject.Find("SampleStageController").GetComponent<StageControlScript>();
-        // goalControlScript = GameObject.Find("Goal).GetComponent<GoalControlScript>();
+        goalControlScript = GameObject.Find("Goal").GetComponent<GoalControlScript>();
     }
 
     // 気絶判定
@@ -73,7 +73,7 @@ public class PlayerStateMGTScript : MonoBehaviour
             // Piを6個取得したらクリア可能状態にする
             if (pi == CAN_CLEAR_PI)
             {
-                // goalControlScript.changeGoal();
+                goalControlScript.changeGoal();
             }
         }
     }
