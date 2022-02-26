@@ -3,9 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameOverControlScript : MonoBehaviour
+public class GameClearControlScript : MonoBehaviour
 {
     private string ReturnSceneName;
+
     public void OnClickStageSelectButton()
     {
         SceneManager.LoadScene("StageSelectScene");
