@@ -23,20 +23,13 @@ public class StageControlScript : MonoBehaviour
     {
         playerStateMGTScript = GameObject.Find("Player").GetComponent<PlayerStateMGTScript>();
         SceneName = SceneManager.GetActiveScene().name;
-        Ready();
+        Play();
     }
 
     void LateUpdate()
     {
         switch (state)
         {
-            case State.Ready:
-                // クリックでゲーム開始
-                if (Input.GetButtonDown("Fire1"))
-                {
-                    Play();
-                }
-                break;
             case State.Play:
                 // エスケープキーでポーズ画面表示
                 if (Input.GetKeyDown(KeyCode.Escape))
@@ -66,15 +59,6 @@ public class StageControlScript : MonoBehaviour
                 }
                 break;
         }
-    }
-
-    void Ready()
-    {
-        state = State.Ready;
-        PauseUI.SetActive(false);
-        SettingUI.SetActive(false);
-        LifePiUI.SetActive(false);
-        Debug.Log(state);
     }
 
     void Play()

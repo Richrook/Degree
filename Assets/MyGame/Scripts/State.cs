@@ -1,7 +1,5 @@
 public enum State
-{
-    Ready,
-    Play,
+{   Play,
     Pause,
     Setting,
     GameOver,
