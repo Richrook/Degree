@@ -7,16 +7,16 @@ public class GoalControlScript : MonoBehaviour
     public GameObject GoalRange; //オブジェクト
     public ParticleSystem GoalEffect; //エフェクト
     //エフェクトの誤動作防止のため一度しか実行できないようにする
-    private int Count_for_effects=0;
+    private bool Count_for_effects = false;
     
     public void changeGoal()
     {
         GoalRange.GetComponent<Renderer>().material.color = new Color32(97,255,0,109);
         GoalRange.GetComponent<Collider>().enabled = false;
-        if (Count_for_effects == 0)
+        if (Count_for_effects == false)
         {
-            GoalEffect.Play (true);
-            Count_for_effects = 1;
+            GoalEffect.Play(true);
+            Count_for_effects = true;
         }
     }
 }
