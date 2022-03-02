@@ -27,6 +27,14 @@ public class PlayerStateMGTScript : MonoBehaviour
         goalControlScript = GameObject.Find("Goal").GetComponent<GoalControlScript>();
     }
 
+    void Update()
+    {
+        if (IsStun())
+        {
+            recoverTime -= Time.deltaTime;
+        }
+    }
+
     // 気絶判定
     private bool IsStun()
     {
@@ -41,6 +49,16 @@ public class PlayerStateMGTScript : MonoBehaviour
     public int getPi()
     {
         return pi;
+    }
+
+    void DistFromEnemy(Collision collision)
+    {
+        string enemyName = collision.gameObject.name;
+        Vector3 enemyPos = GameObject.Find(enemyName).transform.position;
+        Vector3 playerPos = transform.position;
+        playerPos.y = 0;
+        enemyPos.y = 0;
+        gameObject.transform.Translate(playerPos - enemyPos);
     }
 
     // 衝突判定
@@ -72,12 +90,7 @@ public class PlayerStateMGTScript : MonoBehaviour
         if (collision.gameObject.tag == "enemy")
         {
             life -= 1;
-            // 気絶状態に入る
-            string enemyName = collision.gameObject.name;
-            Vector3 enemyPos = GameObject.Find(enemyName).transform.position;
-            Vector3 playerPos = transform.position;
-            playerPos.y = 0;
-            enemyPos.y = 0;
+            DistFromEnemy(collision);
             recoverTime = STUN_DURATION;
 
             Debug.Log("Life: " + life);
