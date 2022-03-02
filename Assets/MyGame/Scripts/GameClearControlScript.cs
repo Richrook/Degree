@@ -14,7 +14,7 @@ public class GameClearControlScript : MonoBehaviour
 
     public void OnClickRetryButton()
     {
-        ReturnSceneName = StageControlScript.getSceneName();
+        ReturnSceneName = StageControlScript.GetSceneName();
 
         SceneManager.LoadScene(ReturnSceneName);
     }
