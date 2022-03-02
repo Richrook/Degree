@@ -35,11 +35,6 @@ public class StageControlScript : MonoBehaviour
                 {
                     Pause();
                 }
-                // ゲーム状況の判定と遷移
-                if (playerStateMGTScript.GetIsGameOver())
-                {
-                    SceneManager.LoadScene("GameOverScene");
-                }
                 break;
             case State.Pause:
                 if (Input.GetKeyDown(KeyCode.Escape))
@@ -89,6 +84,13 @@ public class StageControlScript : MonoBehaviour
         state = State.GameClear;
         Debug.Log("Clear");
         SceneManager.LoadScene("GameClearScene");
+    }
+
+    public void GameOver()
+    {
+        state = State.GameOver;
+        Debug.Log("Game Over");
+        SceneManager.LoadScene("GameOverScene");
     }
 
     // 以下、ポーズ画面でボタンがクリックされたときの処理

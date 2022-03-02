@@ -19,7 +19,6 @@ public class PlayerStateMGTScript : MonoBehaviour
     private int life = MAX_LIFE;
     const int CAN_CLEAR_PI = 6;
     private int pi = 0;
-    private bool isGameOver = false;
 
     // Start is called before the first frame update
     void Start()
@@ -32,11 +31,6 @@ public class PlayerStateMGTScript : MonoBehaviour
     private bool IsStun()
     {
         return recoverTime > 0.0f;
-    }
-
-    public bool GetIsGameOver()
-    {
-        return isGameOver;
     }
 
     public int getLife()
@@ -89,7 +83,7 @@ public class PlayerStateMGTScript : MonoBehaviour
             Debug.Log("Life: " + life);
             if (life <= 0)
             {
-                isGameOver = true;
+                stageControlScript.GameOver();
             }
         }
         // クリア可能な状態であればゲームクリアとする
@@ -110,7 +104,7 @@ public class PlayerStateMGTScript : MonoBehaviour
         // 落下したらゲームオーバーとする
         else if (collision.gameObject.tag == "abyss")
         {
-            isGameOver = true;
+            stageControlScript.GameOver();
         }
     }
 }
