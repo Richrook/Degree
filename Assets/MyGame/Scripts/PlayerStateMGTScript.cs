@@ -18,7 +18,7 @@ public class PlayerStateMGTScript : MonoBehaviour
     const int MAX_LIFE = 5;
     private int life = MAX_LIFE;
     const int CAN_CLEAR_PI = 6;
-    private int pi = 0;
+    private int pi = 5;
     private bool isGameOver = false;
 
     // Start is called before the first frame update
