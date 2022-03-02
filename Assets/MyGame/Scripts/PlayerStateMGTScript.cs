@@ -44,12 +44,12 @@ public class PlayerStateMGTScript : MonoBehaviour
     }
 
     // 衝突判定
-    void OnCollisionStay(Collision collision)
+    void OnTriggerStay(Collider Collider)
     {
         // QキーでPiを取得
-        if (collision.gameObject.tag == "pi")
+        if (Collider.gameObject.tag == "pi")
         {
-            string piName = collision.gameObject.name;
+            string piName = Collider.gameObject.name;
             piControlScript = GameObject.Find(piName).GetComponent<PiControlScript>();
             if ((piControlScript.getIsValid()) && (Input.GetKeyDown(KeyCode.Q)))
             {
