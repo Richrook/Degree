@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657815, g: 0.49641192, b: 0.57481617, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -443,8 +443,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameOverControlScript, Assembly-CSharp
+      - m_Target: {fileID: 1361976275}
+        m_TargetAssemblyTypeName: GameClearControlScript, Assembly-CSharp
         m_MethodName: OnClickStageSelectButton
         m_Mode: 1
         m_Arguments:
@@ -738,8 +738,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: GameOverControlScript, Assembly-CSharp
+      - m_Target: {fileID: 1361976275}
+        m_TargetAssemblyTypeName: GameClearControlScript, Assembly-CSharp
         m_MethodName: OnClickRetryButton
         m_Mode: 1
         m_Arguments:
@@ -910,7 +910,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 102750b523451431d8385416a2dfbf86, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ReturnSceneName: 
 --- !u!1 &1900882635
 GameObject:
   m_ObjectHideFlags: 0

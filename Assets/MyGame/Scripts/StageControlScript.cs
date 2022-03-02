@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class StageControlScript : MonoBehaviour
@@ -23,34 +22,18 @@ public class StageControlScript : MonoBehaviour
     {
         playerStateMGTScript = GameObject.Find("Player").GetComponent<PlayerStateMGTScript>();
         SceneName = SceneManager.GetActiveScene().name;
-        Ready();
+        Play();
     }
 
     void LateUpdate()
     {
         switch (state)
         {
-            case State.Ready:
-                // クリックでゲーム開始
-                if (Input.GetButtonDown("Fire1"))
-                {
-                    Play();
-                }
-                break;
             case State.Play:
                 // エスケープキーでポーズ画面表示
                 if (Input.GetKeyDown(KeyCode.Escape))
                 {
                     Pause();
-                }
-                // ゲーム状況の判定と遷移
-                if (playerStateMGTScript.GetIsGameOver())
-                {
-                    SceneManager.LoadScene("GameOverScene");
-                }
-                else if (playerStateMGTScript.GetIsGameClear())
-                {
-                    SceneManager.LoadScene("GameClearScene");
                 }
                 break;
             case State.Pause:
@@ -66,15 +49,6 @@ public class StageControlScript : MonoBehaviour
                 }
                 break;
         }
-    }
-
-    void Ready()
-    {
-        state = State.Ready;
-        PauseUI.SetActive(false);
-        SettingUI.SetActive(false);
-        LifePiUI.SetActive(false);
-        Debug.Log(state);
     }
 
     void Play()
@@ -105,6 +79,20 @@ public class StageControlScript : MonoBehaviour
         Debug.Log(state);
     }
 
+    public void GameClear()
+    {
+        state = State.GameClear;
+        Debug.Log("Clear");
+        SceneManager.LoadScene("GameClearScene");
+    }
+
+    public void GameOver()
+    {
+        state = State.GameOver;
+        Debug.Log("Game Over");
+        SceneManager.LoadScene("GameOverScene");
+    }
+
     // 以下、ポーズ画面でボタンがクリックされたときの処理
 
     // タイトルに戻る
@@ -131,7 +119,7 @@ public class StageControlScript : MonoBehaviour
         Pause();
     }
 
-    public static string getSceneName()
+    public static string GetSceneName()
     {
         return SceneName;
     }

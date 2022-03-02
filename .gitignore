@@ -73,4 +73,3 @@ crashlytics-build.properties
 # AssetStore から import したアセットを Git 管理下に置かない
 /[Aa]ssets/*
 !/[Aa]ssets/MyGame/
-/[Aa]ssets/MyGame/Library/*
