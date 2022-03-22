@@ -15,11 +15,11 @@ public class UIControlScript : MonoBehaviour
     // ミニマップ関連プロパティ
     [Header("ミニマップ")]
     [Tooltip("ミニマップの広さ")]
-    [Range(0.5f, 2.0f)]
-    public float minimapScale = 1.0f;
+    [Range(1.0f, 10.0f)]
+    public float minimapScale;
     // ミニマップ関連プロパティ (Unity Inspector ウィンドウ非公開)
     Transform target;
-    Transform minimapCamera;
+    GameObject minimapCamera;
     Vector3 offset;
 
     // プレイヤーコントローラーの取得
@@ -67,13 +67,14 @@ public class UIControlScript : MonoBehaviour
     void initMinimap()
     {
         target = GameObject.Find("Player").transform;
-        minimapCamera = GameObject.Find("MinimapCamera").transform;
-        offset = new Vector3(0.0f, 50 * minimapScale, 0.0f);
+        minimapCamera = GameObject.Find("MinimapCamera");
+        minimapCamera.GetComponent<Camera>().orthographicSize = minimapScale;
     }
 
     // ミニマップの更新
     void UpdateMinimap()
     {
-        minimapCamera.position = target.position + offset;
+        offset = new Vector3(0.0f, 100.0f, 0.0f);
+        minimapCamera.transform.position = target.position + offset;
     }
 }
