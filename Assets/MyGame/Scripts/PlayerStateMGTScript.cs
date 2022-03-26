@@ -65,6 +65,16 @@ public class PlayerStateMGTScript : MonoBehaviour
             }
         }
     }
+
+    void DistFromEnemy(Collision collision)
+    {
+        string enemyName = collision.gameObject.name;
+        Vector3 enemyPos = GameObject.Find(enemyName).transform.position;
+        Vector3 playerPos = transform.position;
+        playerPos.y = 0;
+        enemyPos.y = 0;
+        gameObject.transform.Translate(playerPos - enemyPos);
+    }
     void OnCollisionEnter(Collision collision)
     {
         // 敵に当たったらライフを減らす
@@ -72,13 +82,7 @@ public class PlayerStateMGTScript : MonoBehaviour
         if (collision.gameObject.tag == "enemy")
         {
             life -= 1;
-            // 気絶状態に入る
-            string enemyName = collision.gameObject.name;
-            Vector3 enemyPos = GameObject.Find(enemyName).transform.position;
-            Vector3 playerPos = transform.position;
-            playerPos.y = 0;
-            enemyPos.y = 0;
-            recoverTime = STUN_DURATION;
+            DistFromEnemy(collision);
 
             Debug.Log("Life: " + life);
             if (life <= 0)
