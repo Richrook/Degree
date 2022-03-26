@@ -18,10 +18,17 @@ public class StageControlScript : MonoBehaviour
 
     public static string SceneName;
 
+    // Enemy にミニマップ用アイコン追加用
+    [Header("ミニマップ")]
+    public GameObject PrefabEnemyIcon;
+    GameObject EnemyIcon;
+    GameObject[] EnemyList;
+
     void Start()
     {
         playerStateMGTScript = GameObject.Find("Player").GetComponent<PlayerStateMGTScript>();
         SceneName = SceneManager.GetActiveScene().name;
+        AddEnemyIcon();
         Play();
     }
 
@@ -48,6 +55,17 @@ public class StageControlScript : MonoBehaviour
                     Play();
                 }
                 break;
+        }
+    }
+
+    // Enemy タグの付いたオブジェクトの子オブジェクトに EnemyIcon を追加する
+    void AddEnemyIcon()
+    {
+        EnemyList = GameObject.FindGameObjectsWithTag("enemy");
+        foreach (GameObject Enemy in EnemyList)
+        {
+            EnemyIcon = Instantiate(PrefabEnemyIcon, Enemy.transform.position, Quaternion.Euler(90, 0, 0));
+            EnemyIcon.transform.parent = Enemy.transform;
         }
     }
 
