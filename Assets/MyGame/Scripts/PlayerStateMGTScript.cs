@@ -23,7 +23,7 @@ public class PlayerStateMGTScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stageControlScript = GameObject.Find("SampleStageController").GetComponent<StageControlScript>();
+        stageControlScript = GameObject.Find("StageController").GetComponent<StageControlScript>();
         goalControlScript = GameObject.Find("Goal").GetComponent<GoalControlScript>();
     }
 

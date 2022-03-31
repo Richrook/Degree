@@ -281,7 +281,7 @@ GameObject:
   - component: {fileID: 363841227}
   - component: {fileID: 363841229}
   m_Layer: 0
-  m_Name: SampleStageController
+  m_Name: StageController
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
