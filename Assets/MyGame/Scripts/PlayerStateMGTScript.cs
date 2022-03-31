@@ -66,23 +66,24 @@ public class PlayerStateMGTScript : MonoBehaviour
         }
     }
 
-    void DistFromEnemy(Collision collision)
+    void DistFromEnemy(Collider collider)
     {
-        string enemyName = collision.gameObject.name;
+        string enemyName = collider.gameObject.name;
         Vector3 enemyPos = GameObject.Find(enemyName).transform.position;
         Vector3 playerPos = transform.position;
         playerPos.y = 0;
         enemyPos.y = 0;
         gameObject.transform.Translate(playerPos - enemyPos);
     }
-    void OnCollisionEnter(Collision collision)
+
+    void OnTriggerEnter(Collider collider)
     {
         // 敵に当たったらライフを減らす
         // ライフがゼロになったらゲームオーバー
-        if (collision.gameObject.tag == "enemy")
+        if (collider.gameObject.tag == "enemy")
         {
             life -= 1;
-            DistFromEnemy(collision);
+            DistFromEnemy(collider);
 
             Debug.Log("Life: " + life);
             if (life <= 0)
@@ -90,8 +91,11 @@ public class PlayerStateMGTScript : MonoBehaviour
                 stageControlScript.GameOver();
             }
         }
+    }
+    void OnCollisionEnter(Collision collision)
+    {
         // クリア可能な状態であればゲームクリアとする
-        else if ((collision.gameObject.tag == "goal") && (pi >= CAN_CLEAR_PI))
+        if ((collision.gameObject.tag == "goal") && (pi >= CAN_CLEAR_PI))
         {
             stageControlScript.GameClear();
         }
