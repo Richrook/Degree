@@ -11,8 +11,8 @@ public class PlayerStateMGTScript : MonoBehaviour
     GoalControlScript goalControlScript;
 
     // 気絶状態(プレイヤーを一定時間動けなくする)の管理
-    const float STUN_DURATION = 1.0f;
-    private float recoverTime = 0.0f;
+    const float invincibleTime = 1.0f;
+    private float remainingTime = 0.0f;
 
     // 取得状況の管理
     const int MAX_LIFE = 5;
@@ -27,10 +27,18 @@ public class PlayerStateMGTScript : MonoBehaviour
         goalControlScript = GameObject.Find("Goal").GetComponent<GoalControlScript>();
     }
 
-    // 気絶判定
-    private bool IsStun()
+    void Update()
     {
-        return recoverTime > 0.0f;
+        if (isInvincible())
+        {
+            remainingTime -= Time.deltaTime;
+        }
+    }
+
+    // 気絶判定
+    private bool isInvincible()
+    {
+        return remainingTime > 0.0f;
     }
 
     public int getLife()
@@ -66,25 +74,14 @@ public class PlayerStateMGTScript : MonoBehaviour
         }
     }
 
-    void DistFromEnemy(Collider collider)
-    {
-        string enemyName = collider.gameObject.name;
-        Vector3 enemyPos = GameObject.Find(enemyName).transform.position;
-        Vector3 playerPos = transform.position;
-        playerPos.y = 0;
-        enemyPos.y = 0;
-        gameObject.transform.Translate(playerPos - enemyPos);
-    }
-
     void OnTriggerEnter(Collider collider)
     {
         // 敵に当たったらライフを減らす
         // ライフがゼロになったらゲームオーバー
-        if (collider.gameObject.tag == "enemy")
+        if (collider.gameObject.tag == "enemy" && !isInvincible())
         {
             life -= 1;
-            DistFromEnemy(collider);
-
+            remainingTime = invincibleTime;
             Debug.Log("Life: " + life);
             if (life <= 0)
             {
