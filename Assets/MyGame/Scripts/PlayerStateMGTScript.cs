@@ -11,7 +11,7 @@ public class PlayerStateMGTScript : MonoBehaviour
     GoalControlScript goalControlScript;
 
     // 気絶状態(プレイヤーを一定時間動けなくする)の管理
-    const float invincibleTime = 1.0f;
+    const float INVINCIBLE_TIME = 1.0f;
     private float remainingTime = 0.0f;
 
     // 取得状況の管理
@@ -81,7 +81,7 @@ public class PlayerStateMGTScript : MonoBehaviour
         if (collider.gameObject.tag == "enemy" && !isInvincible())
         {
             life -= 1;
-            remainingTime = invincibleTime;
+            remainingTime = INVINCIBLE_TIME;
             Debug.Log("Life: " + life);
             if (life <= 0)
             {
