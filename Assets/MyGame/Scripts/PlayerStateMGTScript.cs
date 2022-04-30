@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStateMGTScript : MonoBehaviour
 {
@@ -10,9 +11,11 @@ public class PlayerStateMGTScript : MonoBehaviour
 
     GoalControlScript goalControlScript;
 
+    public Image img;
+
     // 気絶状態(プレイヤーを一定時間動けなくする)の管理
-    const float STUN_DURATION = 1.0f;
-    private float recoverTime = 0.0f;
+    const float INVINCIBLE_TIME = 1.0f;
+    private float remainingTime = 0.0f;
 
     // 取得状況の管理
     const int MAX_LIFE = 5;
@@ -23,14 +26,24 @@ public class PlayerStateMGTScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stageControlScript = GameObject.Find("SampleStageController").GetComponent<StageControlScript>();
+        stageControlScript = GameObject.Find("StageController").GetComponent<StageControlScript>();
         goalControlScript = GameObject.Find("Goal").GetComponent<GoalControlScript>();
+        img.color = Color.clear;
+    }
+
+    void Update()
+    {
+        if (isInvincible())
+        {
+            remainingTime -= Time.deltaTime;
+        }
+        this.img.color = Color.Lerp(this.img.color, Color.clear, Time.deltaTime);
     }
 
     // 気絶判定
-    private bool IsStun()
+    private bool isInvincible()
     {
-        return recoverTime > 0.0f;
+        return remainingTime > 0.0f;
     }
 
     public int getLife()
@@ -65,29 +78,27 @@ public class PlayerStateMGTScript : MonoBehaviour
             }
         }
     }
-    void OnCollisionEnter(Collision collision)
+
+    void OnTriggerEnter(Collider collider)
     {
         // 敵に当たったらライフを減らす
         // ライフがゼロになったらゲームオーバー
-        if (collision.gameObject.tag == "enemy")
+        if (collider.gameObject.tag == "enemy" && !isInvincible())
         {
             life -= 1;
-            // 気絶状態に入る
-            string enemyName = collision.gameObject.name;
-            Vector3 enemyPos = GameObject.Find(enemyName).transform.position;
-            Vector3 playerPos = transform.position;
-            playerPos.y = 0;
-            enemyPos.y = 0;
-            recoverTime = STUN_DURATION;
-
+            remainingTime = INVINCIBLE_TIME;
+            this.img.color = new Color(0.5f, 0f, 0f, 0.5f);
             Debug.Log("Life: " + life);
             if (life <= 0)
             {
                 stageControlScript.GameOver();
             }
         }
+    }
+    void OnCollisionEnter(Collision collision)
+    {
         // クリア可能な状態であればゲームクリアとする
-        else if ((collision.gameObject.tag == "goal") && (pi >= CAN_CLEAR_PI))
+        if ((collision.gameObject.tag == "goal") && (pi >= CAN_CLEAR_PI))
         {
             stageControlScript.GameClear();
         }
