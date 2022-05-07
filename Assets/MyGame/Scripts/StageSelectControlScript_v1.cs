@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class StageSelectControlScripts : MonoBehaviour
+public class StageSelectControlScript_v1 : MonoBehaviour
 {
     enum State
     {
