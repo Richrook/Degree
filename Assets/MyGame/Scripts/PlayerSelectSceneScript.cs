@@ -9,18 +9,22 @@ public class PlayerSelectSceneScript : MonoBehaviour
         if(Input.GetKeyDown(KeyCode.Return)){
             switch(collision.gameObject.name)
             {
+                // 各ステージを追加したらコメントアウトを外してください.
                 case "ForestStage":
-                    Debug.Log("Forest");
-                    SceneManager.LoadScene("ForestStageScene");
+                    Debug.Log("To Forest");
+                    //SceneManager.LoadScene("ForestStageScene");
                     break;
                 case "DesertStage":
-                    SceneManager.LoadScene("DesertStageScene");
+                    Debug.Log("To Desert");
+                    //SceneManager.LoadScene("DesertStageScene");
                     break;
                 case "WinterStage":
-                    SceneManager.LoadScene("WinterStageScene");
+                    Debug.Log("To Winter");
+                    //SceneManager.LoadScene("WinterStageScene");
                     break;
                 case "DungeonStage":
-                    SceneManager.LoadScene("DungeonStageScene");
+                    Debug.Log("To Dungeon");
+                    //SceneManager.LoadScene("DungeonStageScene");
                     break;
             }
         }
