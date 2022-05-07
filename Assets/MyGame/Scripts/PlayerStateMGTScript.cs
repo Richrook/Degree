@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerStateMGTScript : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PlayerStateMGTScript : MonoBehaviour
     PiControlScript piControlScript;
 
     GoalControlScript goalControlScript;
+
+    public Image img;
 
     // 気絶状態(プレイヤーを一定時間動けなくする)の管理
     const float INVINCIBLE_TIME = 1.0f;
@@ -25,6 +28,7 @@ public class PlayerStateMGTScript : MonoBehaviour
     {
         stageControlScript = GameObject.Find("StageController").GetComponent<StageControlScript>();
         goalControlScript = GameObject.Find("Goal").GetComponent<GoalControlScript>();
+        img.color = Color.clear;
     }
 
     void Update()
@@ -33,6 +37,7 @@ public class PlayerStateMGTScript : MonoBehaviour
         {
             remainingTime -= Time.deltaTime;
         }
+        this.img.color = Color.Lerp(this.img.color, Color.clear, Time.deltaTime);
     }
 
     // 気絶判定
@@ -82,6 +87,7 @@ public class PlayerStateMGTScript : MonoBehaviour
         {
             life -= 1;
             remainingTime = INVINCIBLE_TIME;
+            this.img.color = new Color(0.5f, 0f, 0f, 0.5f);
             Debug.Log("Life: " + life);
             if (life <= 0)
             {
